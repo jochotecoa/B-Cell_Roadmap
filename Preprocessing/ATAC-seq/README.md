@@ -1,5 +1,7 @@
 # ATAC-seq processing
 
+**Note:** An executable script for this workflow is available at `scripts/run_atac_seq.sh`.
+
 Here, you can find a detailed description of how ATAC-seq data were processed in this project.
 
 ## Dependencies

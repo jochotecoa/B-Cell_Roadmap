@@ -1,5 +1,7 @@
 # RNA-seq processing
 
+**Note:** An executable script for this workflow is available at `scripts/run_rna_seq.sh`.
+
 Here, you can find a detailed description of how RNA-seq data were processed in this project.
 
 ## Dependencies

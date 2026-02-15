@@ -1,5 +1,7 @@
 # CUT&RUN processing
 
+**Note:** An executable script for this workflow is available at `scripts/run_cut_and_run.sh`.
+
 Here, you can find a detailed description of how CUT&RUN data were processed in this project.
 
 ## Dependencies

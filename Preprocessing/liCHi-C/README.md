@@ -1,5 +1,7 @@
 # PCHi-C processing
 
+**Note:** An executable script for this workflow is available at `scripts/run_lichi_c.sh`.
+
 Here you can find a detailed description of how the liCHi-C data were processed in this project.
 
 ## Dependencies

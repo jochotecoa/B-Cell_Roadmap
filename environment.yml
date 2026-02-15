@@ -1,0 +1,21 @@
+name: b-cell-roadmap
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - trim-galore
+  - fastqc
+  - bowtie2
+  - samtools
+  - sambamba
+  - deeptools
+  - macs3
+  - star
+  - subread  # for featureCounts
+  - hicup
+  - r-base
+  - bioconductor-csaw
+  - bioconductor-genomicranges
+  - bioconductor-deseq2
+  - bioconductor-chicago

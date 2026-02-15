@@ -1,0 +1,21 @@
+GEMINI.md
+
+# Data files
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.bam.bai
+*.bw
+*.bigWig
+*.bed
+*.narrowPeak
+*.broadPeak
+
+# Results and logs
+results/
+analysis/
+*.log
+*.out
+*.err

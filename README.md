@@ -32,6 +32,23 @@ To reproduce the analysis, we recommend setting up the Conda environment using t
    conda activate b-cell-roadmap
    ```
 
+## Workflow Orchestration
+
+To simplify reproduction, a `Makefile` is provided. You can run individual steps or the entire pipeline:
+
+```bash
+# Setup environment and download standard references
+make setup
+make references
+
+# Run specific pipelines
+make atac_seq
+make rna_seq
+```
+
+### Sample Metadata
+A template for sample metadata is available at `data/metadata.csv`. Update this file to map your local files to experimental conditions.
+
 ## Workflow Scripts
 
 Executable scripts for each preprocessing workflow are available in the `scripts/` directory:

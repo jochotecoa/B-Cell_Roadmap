@@ -5,29 +5,40 @@
 
 set -e
 
-# --- Configuration ---
-# Update these paths
-INPUT_DIR="data/raw"
-OUTPUT_DIR="data/processed/lichi_c"
-GENOME_INDEX="path/to/bowtie2_index"
-HICUP_CONFIG="path/to/hicup.conf"
-THREADS=8
+# Load configuration
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/config.sh"
 
-# Ensure output directory exists
-mkdir -p "$OUTPUT_DIR"
-mkdir -p "$OUTPUT_DIR/hicup"
-mkdir -p "$OUTPUT_DIR/chicago"
+OUTPUT_DIR="$OUTPUT_BASE/lichi_c"
 
-# --- 1. Mapping and Filtering (HiCUP) ---
-echo "Step 1: Mapping and Filtering with HiCUP"
-# hicup --config "$HICUP_CONFIG" --outdir "$OUTPUT_DIR/hicup" --threads "$THREADS"
+# Ensure output directory structure exists
+mkdir -p "$OUTPUT_DIR"/{hicup,chicago}
 
-# --- 2. Capture Efficiency ---
-echo "Step 2: Capture Efficiency"
-# hicup_capture_efficiency --outdir "$OUTPUT_DIR/hicup" --threads "$THREADS"
+echo "Starting liCHi-C pipeline..."
+
+# Automated Sample Discovery
+samples=$(ls "$INPUT_DIR"/*_R1.fastq.gz 2>/dev/null | xargs -n 1 basename | sed 's/_R1.fastq.gz//')
+
+if [ -z "$samples" ]; then
+    echo "No samples found in $INPUT_DIR matching *_R1.fastq.gz"
+    exit 0
+fi
+
+for sample in $samples; do
+    echo "Processing sample: $sample"
+    
+    # --- 1. Mapping and Filtering (HiCUP) ---
+    echo "  Step 1: Mapping and Filtering with HiCUP"
+    # hicup --config "$HICUP_CONFIG" --outdir "$OUTPUT_DIR/hicup" --threads "$THREADS"
+
+    # --- 2. Capture Efficiency ---
+    echo "  Step 2: Capture Efficiency"
+    # hicup_capture_efficiency --outdir "$OUTPUT_DIR/hicup" --threads "$THREADS"
+
+done
 
 # --- 3. Interaction Calling (Chicago - R package) ---
 echo "Step 3: Interaction Calling with Chicago (Requires R script)"
-# Rscript run_chicago.R "$OUTPUT_DIR/hicup/sample_R1_2.hicup.bam" "$OUTPUT_DIR/chicago"
+# Rscript scripts/run_chicago.R "$OUTPUT_DIR/hicup" "$OUTPUT_DIR/chicago"
 
 echo "liCHi-C pipeline completed."

@@ -1,0 +1,7 @@
+sample_id,condition,replicate,sequencing_type,ega_accession
+NBC_R1,Naive_B_Cell,1,RNA-seq,EGAX00001234567
+NBC_R2,Naive_B_Cell,2,RNA-seq,EGAX00001234568
+GCB_R1,Germinal_Center_B_Cell,1,RNA-seq,EGAX00001234569
+GCB_R2,Germinal_Center_B_Cell,2,RNA-seq,EGAX00001234570
+MBC_R1,Memory_B_Cell,1,RNA-seq,EGAX00001234571
+MBC_R2,Memory_B_Cell,2,RNA-seq,EGAX00001234572
